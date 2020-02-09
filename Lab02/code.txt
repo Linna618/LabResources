@@ -1,0 +1,30 @@
+import numpy as np  # scipy inclues a np.exp() function which computes e^x
+from math import e
+def f(x):
+    """ returns the right value """
+    return(e**(-((x**2)/(2*e))))
+
+def g(x):
+    """ Put your docstring describing g here! """
+    return((1/6)*(x**4)*np.exp(5-(e*x)))
+
+from matplotlib import pyplot as plt 
+import numpy as np
+xf=np.linspace(-10,10,1000)
+xg=np.linspace(0,10,500)
+f_eval=f(xf)
+g_eval=g(xg)
+
+from scipy import integrate as integrate  ## THIS COMMAND IS NOT COMPLETE; FILL IT IN
+integrate.quad(f,a=-np.inf,b=np.inf)
+
+
+from scipy import stats as stats
+gam=stats.gamma(a=5,scale=1/3)
+plt.plot(xg,gam.pdf(xg))
+plt.show()
+
+gam_samps=gam.rvs(size=1000)
+plt.hist(gam_samps,density=True)
+plt.plot(xg,gam.pdf(xg))
+
